@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertical Progress Bar Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="step active">Company Details</div>
+          <div class="line"></div>
+          <div class="step">Job Details</div>
+          <div class="line"></div>
+          <div class="step">Review Job</div>
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="forms">
+          <div class="form-section company-details active">
+            <span style="display: flex; justify-content: space-between">
+              <h2>Company Details</h2>
+              <button
+                type="button"
+                class="clear-btn"
+                style="background: none; border: none; color: dodgerblue"
+              >
+                Clear All
+              </button>
+            </span>
+
+            <form id="companyDetailsForm">
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="companyName" style="font-weight: bold"
+                    >Company Name</label
+                  >
+                  <label style="margin-right: 335px" for="email">Email</label>
+                </span>
+
+                <span style="display: flex">
+                  <input
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    required
+                    style="margin-right: 20px"
+                  />
+
+                  <div>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      onkeyup="validateEmail()"
+                      style="margin-right: 380px"
+                    />
+                    <span id="emailError" class="error-message"></span>
+                  </div>
+                </span>
+              </div>
+
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="phoneNumber">Phone Number</label>
+                  <label for="address" style="margin-right: 315px"
+                    >Address</label
+                  >
+                </span>
+                <span style="display: flex">
+                  <div>
+                    <input
+                      type="tel"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      required
+                      onkeyup="validatePhoneNumber()"
+                      required
+                      style="margin-right: 350px"
+                    />
+                    <span id="phoneNumberError" class="error-message"></span>
+                  </div>
+
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    required
+                    style="margin-left: 20px"
+                  />
+                </span>
+              </div>
+
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="country">Country</label>
+                  <label for="state" style="margin-right: 340px">State</label>
+                </span>
+                <span style="display: flex">
+                  <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    required
+                    style="margin-right: 20px"
+                  /><br />
+
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    style="margin-right: 20px"
+                    required
+                  /><br />
+                </span>
+              </div>
+
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="city">City</label>
+                  <label for="zipCode" style="margin-right: 310px"
+                    >Zip Code</label
+                  >
+                </span>
+                <span style="display: flex">
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    required
+                    style="margin-right: 20px"
+                  /><br />
+                  <div>
+                    <input
+                      type="text"
+                      id="zipCode"
+                      name="zipCode"
+                      onkeyup="validateZipCode()"
+                      style="margin-right: 370px"
+                    /><br />
+                    <span id="zipCodeError" class="error-message"></span>
+                  </div>
+                </span>
+              </div>
+
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="dateEstablished">Date of Establishment</label>
+                  <label for="category" style="margin-right: 310px"
+                    >Category</label
+                  >
+                </span>
+                <span style="display: flex">
+                  <input
+                    type="date"
+                    id="dateEstablished"
+                    name="dateEstablished"
+                    required
+                    style="flex: 1; margin-right: 20px"
+                  />
+
+                  <select
+                    id="category"
+                    name="category"
+                    required
+                    style="flex: 1"
+                  >
+                    <option value="">Select category</option>
+                    <option value="Category 1">Category 1</option>
+                    <option value="Category 2">Category 2</option>
+                    <option value="Category 3">Category 3</option>
+                  </select>
+                </span>
+              </div>
+
+              <br />
+              <label for="companyWebsite">Company Website</label>
+              <input
+                type="url"
+                id="companyWebsite"
+                name="companyWebsite"
+                onkeyup="validateWebsite()"
+                required
+              />
+              <span id="companyWebsiteError" class="error-message"></span>
+              <br />
+              <br />
+              <label for="companyDescription">Company Description</label>
+              <textarea
+                id="companyDescription"
+                name="companyDescription"
+                required
+              ></textarea
+              ><br />
+              <br />
+              <div style="display: flex; justify-content: flex-end">
+                <button type="button" class="next-btn">Next</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-section job-details">
+            <div style="display: flex; justify-content: space-between">
+              <h2>Job Details</h2>
+              <button
+                type="button"
+                class="clear-btn"
+                style="background: none; border: none; color: dodgerblue"
+              >
+                Clear All
+              </button>
+            </div>
+
+            <form id="jobDetailsForm">
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="jobTitle">Job Title</label>
+                  <label for="jobCategory" style="margin-right: 275px"
+                    >Job Category</label
+                  >
+                </span>
+                <span style="display: flex">
+                  <input
+                    type="text"
+                    id="jobTitle"
+                    name="jobTitle"
+                    required
+                    style="margin-right: 20px" />
+
+                  <input
+                    type="text"
+                    id="jobCategory"
+                    name="jobCategory"
+                    required
+                /></span>
+              </div>
+
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <legend>Job Type</legend>
+                  <legend style="margin-right: 290px">Work Mode</legend>
+                </span>
+                <span style="display: flex">
+                  <fieldset
+                    style="
+                      flex: 1;
+                      display: flex;
+                      border: none;
+                      justify-content: space-between;
+                    "
+                  >
+                    <label class="btn-radio"
+                      >Full-time<input
+                        type="radio"
+                        name="jobType"
+                        value="fulltime"
+                        required
+                      />
+                    </label>
+                    <label class="btn-radio"
+                      >Part-time<input
+                        type="radio"
+                        name="jobType"
+                        value="parttime"
+                      />
+                    </label>
+                    <label class="btn-radio"
+                      >Internship<input
+                        type="radio"
+                        name="jobType"
+                        value="internship"
+                      />
+                    </label>
+                  </fieldset>
+                  <fieldset
+                    style="
+                      flex: 1;
+                      display: flex;
+                      border: none;
+                      justify-content: space-around;
+                    "
+                  >
+                    <label class="btn-radio-m"
+                      >WFO<input
+                        type="radio"
+                        name="workMode"
+                        value="WFO"
+                        required
+                    /></label>
+                    <label class="btn-radio-m"
+                      >WFH<input type="radio" name="workMode" value="WFH"
+                    /></label>
+                    <label class="btn-radio-m"
+                      >Hybrid<input type="radio" name="workMode" value="Hybrid"
+                    /></label>
+                  </fieldset>
+                </span>
+              </div>
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label for="experience">Experience</label>
+                  <legend style="margin-right: 270px">Job Schedule</legend>
+                </span>
+                <span style="display: flex; justify-content: space-between">
+                  <div style="display: flex; width: 50%">
+                    <select
+                      id="experience"
+                      name="experience"
+                      required
+                      style="
+                        flex: 1;
+                        height: 40px;
+                        margin-top: 23px;
+                        margin-right: 15px;
+                      "
+                    >
+                      <option value="0-1 years">0-1 years</option>
+                      <option value="1-3 years">1-3 years</option>
+                      <option value="3-5 years">3-5 years</option>
+                      <option value="5+ years">5+ years</option>
+                    </select>
+                    <div style="flex: 1; margin-top: 23px">
+                      <select
+                        id="salaryCurrency"
+                        name="salaryCurrency"
+                        required
+                      >
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                      </select>
+                    </div>
+
+                    <div style="flex: 1">
+                      <label for="fromDate" style="margin-left: 15px"
+                        >From</label
+                      >
+                      <input
+                        type="date"
+                        id="fromDate"
+                        name="fromDate"
+                        required
+                        style="width: 60px; margin-left: 15px"
+                      />
+                    </div>
+                    <div style="flex: 1">
+                      <label for="toDate">To</label>
+                      <input
+                        type="date"
+                        id="toDate"
+                        name="toDate"
+                        required
+                        style="width: 60px"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <fieldset
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        border: none;
+                      "
+                    >
+                      <label class="btn-radio-sc"
+                        >Evening<input
+                          type="radio"
+                          name="jobSchedule"
+                          value="Evening"
+                          required
+                      /></label>
+                      <label class="btn-radio-sc"
+                        >Late night<input
+                          type="radio"
+                          name="jobSchedule"
+                          value="Late night"
+                      /></label>
+                      <label class="btn-radio-sc"
+                        >Early morning<input
+                          type="radio"
+                          name="jobSchedule"
+                          value="Early morning"
+                      /></label>
+                    </fieldset>
+                  </div>
+                </span>
+              </div>
+
+              <div style="margin-top: 10px">
+                <span style="display: flex; justify-content: space-between">
+                  <label>Salary</label>
+                  <label style="margin-right: 310px" for="vacancy"
+                    >Vacancy</label
+                  >
+                </span>
+                <span style="display: flex">
+                  <div>
+                    <input
+                      type="number"
+                      id="salaryAmount"
+                      name="salaryAmount"
+                      onkeyup="validateSalary()"
+                      required
+                      style="margin-right: 350px"
+                    />
+                    <span id="salaryError" class="error-message"></span>
+                  </div>
+
+                  <input
+                    type="number"
+                    id="vacancy"
+                    name="vacancy"
+                    style="margin-left: 20px"
+                    required
+                  />
+                </span>
+              </div>
+
+              <label for="jobDescription">Job Description:</label>
+              <textarea
+                id="jobDescription"
+                name="jobDescription"
+                required
+              ></textarea
+              ><br />
+              <label for="requirements">Requirements:</label>
+              <textarea
+                id="requirements"
+                name="requirements"
+                required
+              ></textarea
+              ><br />
+
+              <div style="display: flex; justify-content: flex-end">
+                <button
+                  type="button"
+                  class="prev-btn"
+                  style="
+                    margin-right: 10px;
+                    color: gray;
+                    background-color: white;
+                    border: 1px solid gray;
+                  "
+                >
+                  Previous
+                </button>
+                <button type="button" class="next-btn">Next</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-section review-job">
+            <!-- <h2>Review Job</h2> -->
+            <div id="reviewDetails">
+              <div>
+                <div class="bg"></div>
+                <img class="logo" src="./amazon-logo.png" alt="logo" />
+              </div>
+            </div>
+            <button type="button" class="post-btn">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
